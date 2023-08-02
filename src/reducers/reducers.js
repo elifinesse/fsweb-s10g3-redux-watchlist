@@ -12,12 +12,11 @@ export function reducer(state = initialState, action) {
         favMovies: [...state.favMovies, action.payload],
       };
     case REMOVE_FAV:
+      const removed = state.favMovies.find((mov) => mov.id === action.payload);
       return {
         ...state,
-        movies: [...state.movies, action.payload],
-        favMovies: state.favMovies.filter(
-          (mov) => action.payload.id !== mov.id
-        ),
+        movies: [...state.movies, removed],
+        favMovies: state.favMovies.filter((mov) => action.payload !== mov.id),
       };
     default:
       return state;
