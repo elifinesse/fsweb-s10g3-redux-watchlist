@@ -14,6 +14,12 @@ function App() {
   function sonrakiFilm() {
     setSira(sira + 1);
   }
+  function oncekiFilm() {
+    setSira(sira - 1);
+  }
+  function basaDon() {
+    setSira(0);
+  }
 
   return (
     <div className="wrapper max-w-2xl mx-auto">
@@ -39,11 +45,27 @@ function App() {
           <Movie sira={sira} />
 
           <div className="flex gap-3 justify-end py-3">
+            {sira !== 0 && (
+              <button
+                onClick={oncekiFilm}
+                className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+              >
+                Önceki
+              </button>
+            )}
+            {sira !== movies.length - 1 && (
+              <button
+                onClick={sonrakiFilm}
+                className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+              >
+                Sıradaki
+              </button>
+            )}
             <button
-              onClick={sonrakiFilm}
+              onClick={basaDon}
               className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
             >
-              Sıradaki
+              Başa Dön
             </button>
             <button
               onClick={() => dispatch({ type: ADD_FAV, payload: movies[sira] })}
