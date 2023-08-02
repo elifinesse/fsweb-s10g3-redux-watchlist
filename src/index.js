@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, legacy_createStore as createStore } from "redux";
 import { reducer } from "./reducers/reducers";
 import { BrowserRouter } from "react-router-dom";
 import logger from "redux-logger";

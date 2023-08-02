@@ -3,22 +3,22 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 import { useSelector, useDispatch } from "react-redux";
-import { ADD_FAV, REMOVE_FAV } from "./actions/actions";
+import { ADD_FAV, PREV_MOV, NEXT_MOV, GO_BEGINNING } from "./actions/actions";
 
 function App() {
-  const [sira, setSira] = useState(0);
   const favMovies = useSelector((state) => state.favMovies);
   const movies = useSelector((state) => state.movies);
+  const sira = useSelector((state) => state.order);
   const dispatch = useDispatch();
 
   function sonrakiFilm() {
-    setSira(sira + 1);
+    dispatch({ type: NEXT_MOV });
   }
   function oncekiFilm() {
-    setSira(sira - 1);
+    dispatch({ type: PREV_MOV });
   }
   function basaDon() {
-    setSira(0);
+    dispatch({ type: GO_BEGINNING });
   }
 
   return (
